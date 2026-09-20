@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #08090c;
+  --bg-elev: #11151b;
+  --ink: #f2efe6;
+  --muted: #8f968e;
+  --line: #262d2a;
+  --accent: #c8f04d;
+  --accent-soft: #1a2610;
+  --warn: #ff8a5b;
+  --java: #ffb45a;
+  --go: #3ee0c4;
+  --radius: 1.1rem;
+  --rail: 15.5rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #efe8d8;
+    --bg-elev: #fffaf1;
+    --ink: #141714;
+    --muted: #5c635c;
+    --line: #d7cfc0;
+    --accent: #2f5b1c;
+    --accent-soft: #dce8c8;
+    --warn: #9a3412;
+    --java: #b45309;
+    --go: #0f766e;
+  }
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(900px 420px at 100% -10%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 50%),
+    radial-gradient(700px 380px at -10% 110%, color-mix(in oklab, var(--go) 10%, transparent), transparent 46%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3,
+.display {
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  font-feature-settings: "liga" 0, "calt" 0, "dlig" 0;
+}
+
+code,
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.05rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  color: var(--bg);
+  filter: brightness(1.06);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+}
+
+.field {
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.kicker {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.shell {
+  min-height: 100svh;
+}
+
+@media (min-width: 64rem) {
+  .shell {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+  }
+}
+
+.rail {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .rail {
+    display: flex;
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    flex-direction: column;
+    border-right: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg) 88%, var(--bg-elev));
+    padding: 1.4rem 1.1rem 1.2rem;
+  }
+}
+
+.dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.15rem;
+  border-top: 1px solid var(--line);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+  padding: 0.45rem 0.4rem calc(0.45rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 64rem) {
+  .dock {
+    display: none;
+  }
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 0.85rem;
+  padding: 0.55rem 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav-item:hover,
+.nav-item.is-active {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  border-radius: 0.7rem;
+  padding: 0.4rem 0.15rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.65rem;
+}
+
+.dock-item.is-active {
+  color: var(--ink);
+  background: var(--accent-soft);
+}

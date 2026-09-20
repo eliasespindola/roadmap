@@ -1,0 +1,44 @@
+# Dependências
+node_modules/
+
+# Build Vite / TypeScript
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env e overrides locais (não sobe secret)
+.env
+.env.*
+!.env.example
+*.local
+
+# Cache / cobertura
+.vite/
+.cache/
+coverage/
+.nyc_output/
+
+# SO
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
