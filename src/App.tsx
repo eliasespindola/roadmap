@@ -9,22 +9,27 @@ import { MindMapPage } from "./pages/MindMapPage"
 import { PlatformPage } from "./pages/PlatformPage"
 import { RoadmapPage } from "./pages/RoadmapPage"
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: "plataforma", element: <PlatformPage /> },
-      { path: "mental", element: <MindMapPage /> },
-      { path: "roadmap", element: <RoadmapPage /> },
-      { path: "desafios", element: <ChallengesPage /> },
-      { path: "desafios/:id", element: <ChallengePage /> },
-      { path: "ia", element: <AiPage /> },
-      { path: "biblioteca", element: <BibliotecaPage /> },
-    ],
-  },
-])
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "")
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: "plataforma", element: <PlatformPage /> },
+        { path: "mental", element: <MindMapPage /> },
+        { path: "roadmap", element: <RoadmapPage /> },
+        { path: "desafios", element: <ChallengesPage /> },
+        { path: "desafios/:id", element: <ChallengePage /> },
+        { path: "ia", element: <AiPage /> },
+        { path: "biblioteca", element: <BibliotecaPage /> },
+      ],
+    },
+  ],
+  { basename: basename || undefined },
+)
 
 export default function App() {
   return <RouterProvider router={router} />
